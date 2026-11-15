@@ -1,0 +1,11 @@
+[build]
+  publish = "."
+[functions]
+  directory = "netlify/functions"
+[[headers]]
+  for = "/lib/*.ts"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+[images]
+  remote_images = ["https://a.ltrbxd.com/resized/.*"]

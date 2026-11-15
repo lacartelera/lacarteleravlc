@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La cartelera: València · Agenda de cine</title>
+<link rel="stylesheet" href="/styles.css"><script defer src="/vendor/smartcrop.js"></script><script type="module" src="/app.js"></script>
+</head>
+<body>
+<header><div class="container"><h1>La cartelera: València</h1><label for="search" class="sr-only">Buscar película, sala o ciclo</label><input type="search" id="search" class="search" placeholder="Buscar película, sala o ciclo"></div></header>
+<main class="container">
+<div class="filter-panel" aria-label="Filtros de la cartelera">
+<div class="filter-row"><h2 id="venue-label" class="filter-label"><span>1</span> Cine o espacio</h2><div class="filters"><select id="venue-filter" aria-labelledby="venue-label"><option value="">Todos los espacios</option></select></div></div>
+<div class="filter-row"><h2 id="cycles-label" class="filter-label"><span>2</span> Ciclos</h2><div class="filters"><select id="cycle-filter" aria-labelledby="cycles-label"><option value="">Todos los ciclos</option></select></div></div>
+<div class="filter-row"><h2 id="period-label" class="filter-label"><span>3</span> Periodo</h2><div class="toolbar"><div class="tabs" role="group" aria-labelledby="period-label"><button data-period="today" aria-pressed="true" class="active">Hoy</button><button data-period="week" aria-pressed="false">Semana</button><button data-period="month" aria-pressed="false">Mes</button></div><button id="refresh">Actualizar cartelera</button></div></div>
+<div class="filter-row"><h2 id="type-label" class="filter-label"><span>4</span> Tipo de sesión</h2><div class="filters" role="group" aria-labelledby="type-label"><button data-filter="all" class="active" aria-pressed="true">Todas</button><button data-filter="vose" aria-pressed="false">VOSE</button><button data-filter="free" aria-pressed="false">Gratuitas</button><button data-filter="rerelease" aria-pressed="false">Reestrenos</button></div></div>
+</div>
+<p id="status" role="status">Cargando programación de las salas…</p>
+<div class="heading"><h2 id="agenda-title">Agenda de hoy</h2><button id="reset">Limpiar filtros</button></div>
+<div id="days" class="days" aria-label="Seleccionar fecha"></div>
+<div class="agenda-meta"><p id="count" aria-live="polite"></p><p class="hint">Elige un horario para ver la sesión en la web del cine</p></div><section id="listings" aria-label="Sesiones" aria-busy="true"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></section>
+</main><footer class="legal container"><p>Este sitio web es un proyecto independiente y sin ánimo de lucro creado con fines informativos y culturales para Valencia.</p><p>Todas las marcas, nombres de cines, carteles y contenidos multimedia pertenecen a sus respectivos propietarios y distribuidoras.</p><p>Si tienes sugerencias o comentarios me encantará leerte. Escríbeme a <a href="mailto:hola.lacartelera@outlook.es">hola.lacartelera@outlook.es</a></p></footer>
+</body></html>

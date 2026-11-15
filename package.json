@@ -1,0 +1,1 @@
+{"name":"cine-valencia","private":true,"type":"module","scripts":{"test":"node --experimental-strip-types --test tests/*.test.mjs"},"dependencies":{"@netlify/blobs":"^11.1.7","@netlify/functions":"^3.1.0","cheerio":"^1.1.2"}}
