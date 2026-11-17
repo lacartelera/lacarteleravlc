@@ -49,3 +49,9 @@ await writeFile('dist/lib/posters.js', await adaptar('lib/posters.js', [
 ]));
 
 console.log(`Listo: ${data.sessions.length} sesiones, ${data.sources.filter(s => s.available).length}/${data.sources.length} fuentes disponibles.`);
+
+console.log('Fuentes que han fallado:');
+
+data.sources
+  .filter(s => !s.available)
+  .forEach(s => console.log('-', s.name));
