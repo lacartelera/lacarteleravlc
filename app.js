@@ -63,18 +63,55 @@ function render() {
     }
     info.append(times);
     const posterBox=element('div','','poster-box');
-    const fallback=element('span','Sin imagen','poster-fallback');fallback.hidden=true;posterBox.append(fallback);
-    const image=element('img');image.width=108;image.height=162;image.loading='lazy';image.decoding='async';
-    const sources=posterSources(session);let sourceIndex=0;
-    const loadSource=()=>{image.alt=`Cartel de ${session.title} · ${sources[sourceIndex].label}`;image.src=sources[sourceIndex].url;};
-    image.onerror=()=>{
-      sourceIndex++;
-      if(sourceIndex<sources.length) loadSource();
-      else {image.remove();fallback.hidden=false;posterBox.classList.add('no-image');}
-    };
-    image.onload=()=>{fallback.hidden=true;void framePoster(image);};
-    loadSource();posterBox.append(image);
+const fallback=element('span','Sin imagen','poster-fallback');
+fallback.hidden=true;
+posterBox.append(fallback);
 
+const image=element('img');
+image.width=108;
+image.height=162;
+image.loading='lazy';
+image.decoding='async';
+
+const sources=posterSources(session) || [];
+
+if(!sources.length){
+  fallback.hidden=false;
+  posterBox.classList.add('no-image');
+}else{
+  let sourceIndex=0;
+
+  const loadSource=()=>{
+    const source=sources[sourceIndex];
+    if(!source){
+      fallback.hidden=false;
+      posterBox.classList.add('no-image');
+      return;
+    }
+
+    image.alt=`Cartel de ${session.title} · ${source.label || 'Sin imagen'}`;
+    image.src=source.url;
+  };
+
+  image.onerror=()=>{
+    sourceIndex++;
+    if(sourceIndex<sources.length){
+      loadSource();
+    }else{
+      image.remove();
+      fallback.hidden=false;
+      posterBox.classList.add('no-image');
+    }
+  };
+
+  image.onload=()=>{
+    fallback.hidden=true;
+    void framePoster(image);
+  };
+
+  loadSource();
+  posterBox.append(image);
+}
     card.append(posterBox,info);grid.append(card);
   }
   const cycles = $('#cycle-filter');
