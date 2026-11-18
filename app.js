@@ -130,7 +130,7 @@ async function fetchListings() {
   if(fetching) return; fetching=true;
   $('#refresh').disabled = true; $('#listings').setAttribute('aria-busy','true'); $('#status').textContent = 'Consultando las webs oficiales…';
   try {
-    const response = await fetch('/.netlify/functions/listings');
+    const response = await fetch('listings.json');
     if(!response.ok) throw new Error('No listings');
     const next = await response.json(); if(!Array.isArray(next.sessions)) throw new Error('Invalid response'); data = next;
     data.today = new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Madrid',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
