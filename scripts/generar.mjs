@@ -40,7 +40,7 @@ await writeFile('dist/index.html', await adaptar('index.html', [
 
 await writeFile('dist/app.js', await adaptar('app.js', [
   ["'/.netlify/functions/listings'", "'listings.json'"],
-], true));
+], false));
 
 // Sin las funciones de Netlify, los carteles se cargan directamente desde la web de cada cine.
 await writeFile('dist/lib/posters.js', await adaptar('lib/posters.js', [
