@@ -85,7 +85,7 @@ export async function collectCultural(source:typeof culturalSources[number], htm
 export function parseUPV(html:string,url:string):Session[]{
   const $=load(html), sessions:Session[]=[];
   const body=$('body').text().replace(/\s+/g,' ');
-  if(!/Dijous|Huellas de una sombra/i.test(body))return sessions;
+  if(!/Dijous|pel·lícula|pelicula|cine/i.test(body))return sessions;
   const months=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
   let year='';
   $('h2,div').each((_,el)=>{
